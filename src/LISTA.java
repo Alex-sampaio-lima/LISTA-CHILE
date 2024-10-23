@@ -64,8 +64,12 @@ public class LISTA {
 
 
 //      Ex 11
-        consoleLog(salarios());
+//        consoleLog(salarios());
 
+//      Ex 12
+
+//      Ex 13
+        Ex13();
     }
 
     public static void consoleLog(Object x) {
@@ -362,7 +366,108 @@ public class LISTA {
 
 //    }
 
+    //  Ex 13
+
+    public static void Ex13() {
+        int k = 0;
+        int[] idadeJogadoresTime1 = new int[15];
+        int[] idadeJogadoresTime2 = new int[15];
+        int[] idadeJogadoresTime3 = new int[15];
+        int[] idadeJogadoresTime4 = new int[15];
+        int[] idadeJogadoresTime5 = new int[15];
+
+        double[] alturaJogadores = new double[75];
+
+
+        int menorIdade = 0;
+        int idade = 0;
+        int countIdade = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.printf("Informe a idade dos jogadores do time %dº: %n", i);
+            for (int j = 0; j < 15; j++) {
+                idade = escreverInt(read);
+                if (idade < 17) {
+                    menorIdade++;
+                }
+                if (i == 1) {
+                    idadeJogadoresTime1[j] = idade;
+                } else if (i == 2) {
+                    idadeJogadoresTime2[j] = idade;
+                } else if (i == 3) {
+                    idadeJogadoresTime3[j] = idade;
+                } else if (i == 4) {
+                    idadeJogadoresTime4[j] = idade;
+                } else {
+                    idadeJogadoresTime5[j] = idade;
+                }
+                alturaJogadores[countIdade] = idade;
+                countIdade++;
+            }
+        }
+
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime1));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime2));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime3));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime4));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime5));
+
+
+        System.out.println("A média de idade dos jogadores do primeiro time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime1));
+
+        double altura = 0, somaAltura = 0, totalMediaAltura = 0, countJogadores = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.printf("Informe a altura dos jogadores %d", i);
+            for (int j = 0; j < 15; j++) {
+                altura = escreverDouble(read);
+                somaAltura += altura;
+                countJogadores++;
+            }
+        }
+        totalMediaAltura = somaAltura / countJogadores;
+        consoleLog(totalMediaAltura);
+
+
+    }
+
+    public static int[] receberIdade(int x) {
+        int i = 0;
+        int[] idade = new int[15];
+
+        System.out.println("Entrou");
+        for (int numeroIdade : idade) {
+            numeroIdade = escreverInt(read);
+            idade[i] = numeroIdade;
+            i++;
+        }
+        return idade;
+    }
+
+    public static int jogadoresMenoresDeIdade(int[] x) {
+        int contadorMenorIdade = 0;
+
+        for (int idade : x) {
+            if (idade < 18) {
+                contadorMenorIdade++;
+            }
+        }
+
+        System.out.println("Jogadores menores de idade: ");
+        return contadorMenorIdade;
+    }
+
+    public static int mediaIdadeJogadresPorTime(int[] x) {
+        int somaIdade = 0;
+        int idade = 0;
+        int mediaIdade = 0;
+
+        for (int i = 0; i < x.length; i++) {
+            idade = x[i];
+            somaIdade += idade;
+        }
+        mediaIdade = somaIdade / x.length;
+
+        return mediaIdade;
+    }
 }
-
-
-
