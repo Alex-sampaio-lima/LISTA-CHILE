@@ -369,7 +369,6 @@ public class LISTA {
     //  Ex 13
 
     public static void Ex13() {
-        int k = 0;
         int[] idadeJogadoresTime1 = new int[15];
         int[] idadeJogadoresTime2 = new int[15];
         int[] idadeJogadoresTime3 = new int[15];
@@ -377,7 +376,6 @@ public class LISTA {
         int[] idadeJogadoresTime5 = new int[15];
 
         double[] alturaJogadores = new double[75];
-
 
         int menorIdade = 0;
         int idade = 0;
@@ -406,29 +404,44 @@ public class LISTA {
             }
         }
 
-        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime1));
-        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime2));
-        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime3));
-        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime4));
-        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime5));
-
-
-        System.out.println("A média de idade dos jogadores do primeiro time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime1));
-
-        double altura = 0, somaAltura = 0, totalMediaAltura = 0, countJogadores = 0;
+        double altura = 0.0, somaAltura = 0, totalMediaAltura = 0, countJogadores = 0;
 
         for (int i = 1; i <= 5; i++) {
-            System.out.printf("Informe a altura dos jogadores %d", i);
+            System.out.printf("Informe a altura dos jogadores %d%n", i);
             for (int j = 0; j < 15; j++) {
                 altura = escreverDouble(read);
                 somaAltura += altura;
                 countJogadores++;
             }
         }
+
+        double peso = 0.0, somaPeso = 0.0;
+        int countJogadoresPorPeso = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.printf("Informe o peso dos jogadores %d%n", i);
+            for (int j = 0; j < 15; j++) {
+                peso = escreverDouble(read);
+                somaPeso += peso;
+                countJogadoresPorPeso++;
+            }
+        }
+
         totalMediaAltura = somaAltura / countJogadores;
-        consoleLog(totalMediaAltura);
 
+        consoleLog("A altura média de todos jogadores do campeonato é de: " + totalMediaAltura);
 
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime1));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime2));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime3));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime4));
+        consoleLog(jogadoresMenoresDeIdade(idadeJogadoresTime5));
+
+        consoleLog("A média de idade dos jogadores do primeiro time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime1));
+        consoleLog("A média de idade dos jogadores do Segundo time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime2));
+        consoleLog("A média de idade dos jogadores do Terceiro time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime3));
+        consoleLog("A média de idade dos jogadores do Quarto time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime4));
+        consoleLog("A média de idade dos jogadores do Quinto time é: " + mediaIdadeJogadresPorTime(idadeJogadoresTime5));
     }
 
     public static int[] receberIdade(int x) {
@@ -453,7 +466,7 @@ public class LISTA {
             }
         }
 
-        System.out.println("Jogadores menores de idade: ");
+        System.out.print("Jogadores menores de idade: ");
         return contadorMenorIdade;
     }
 
@@ -470,4 +483,7 @@ public class LISTA {
 
         return mediaIdade;
     }
+
+//    Ex 14
+
 }
