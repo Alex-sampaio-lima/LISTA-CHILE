@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Scanner;
 import javax.swing.plaf.IconUIResource;
@@ -28,7 +29,7 @@ public class LISTA {
 //        System.out.printf("Soma dos Números %d", somaTermoCinco());
 
 //        Ex 6
-//        somaTermoCincoAtualizada(10, 50);
+//        consoleLog(somaTermoCincoAtualizada(10, 50));
 
 //        Ex 7
 //        System.out.printf("O salário atual desse funcionáiro é de R$ %.2f",aumentoSalarial());
@@ -69,7 +70,11 @@ public class LISTA {
 //      Ex 12
 
 //      Ex 13
-        Ex13();
+//      Ex13();
+
+//      Ex 14
+        maiorEmenor();
+
     }
 
     public static void consoleLog(Object x) {
@@ -484,6 +489,58 @@ public class LISTA {
         return mediaIdade;
     }
 
-//    Ex 14
+    //    Ex 14
+    public static void maiorEmenor() {
+        int x = 0;
+        int y = 0;
+        int maiorNumero = 0;
+        int menorNumero = 0;
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        while ((x >= 0 && y >= 0)) {
+            consoleLog("Digite o primeiro número: ");
+            x = escreverInt(read);
+//            menorNumero = x;
+            if (x < 0) break;
+            consoleLog("Digite o segundo número: ");
+            y = escreverInt(read);
+            if (y < 0) break;
+            maiorNumero = maior(maiorNumero, x, y);
+            menorNumero = menor(menorNumero, x, y);
+        }
+        consoleLog("Maior número digitado " + maiorNumero);
+        consoleLog("Menor número digitado " + menorNumero);
+    }
+
+    public static int maior(int maiorNumero, int x, int y) {
+
+        if (x >= maiorNumero) {
+            maiorNumero = x;
+        }
+        if (y >= maiorNumero) {
+            maiorNumero = y;
+        }
+
+        return maiorNumero;
+    }
+
+    public static int menor(int menorNumero, int x, int y) {
+
+        if (x <= y) {
+            menorNumero = x;
+        }
+        if (x <= menorNumero) {
+            menorNumero = x;
+        }
+
+        if (y <= menorNumero) {
+            menorNumero = y;
+        }
+
+        return menorNumero;
+    }
+
+//    Ex 15
+
 
 }
