@@ -1,9 +1,7 @@
 package src;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Scanner;
-import javax.swing.plaf.IconUIResource;
 import java.util.Objects;
 
 public class LISTA {
@@ -68,12 +66,19 @@ public class LISTA {
 //        consoleLog(salarios());
 
 //      Ex 12
+//        termosNumerosAleatorios();
 
 //      Ex 13
 //      Ex13();
 
 //      Ex 14
-        maiorEmenor();
+//        maiorEmenor();
+
+//      Ex 15
+//        quinzeValores();
+
+//      Ex 16
+//        desenho();
 
     }
 
@@ -91,6 +96,10 @@ public class LISTA {
 
     public static double escreverDouble(Scanner x) {
         return x.nextDouble();
+    }
+
+    public static String escreverString(Scanner x) {
+        return x.nextLine();
     }
 
     public static String escrever(Scanner x) {
@@ -137,9 +146,8 @@ public class LISTA {
 
     // Ex 4
     public static int somaDosTermosAtualizada(int x) {
-        int[] numeros = new int[x];
         int soma = 0;
-        for (int i = 0; i <= numeros.length; i++) {
+        for (int i = 0; i <= x; i++) {
             soma += i;
         }
         return soma;
@@ -367,9 +375,45 @@ public class LISTA {
     }
 
     //  Ex 12
-//    public static int Ex12 () {
+    public static void termosNumerosAleatorios() {
+        int termo1 = 2;
+        int termo2 = 7;
+        int termo3 = 3;
+        int[] numeros = new int[100];
+        int[] result1 = new int[numeros.length];
+        int[] result2 = new int[numeros.length];
+        int[] result3 = new int[numeros.length];
+        int[] total = new int[numeros.length];
+        int[] proximoResult1 = new int[numeros.length];
+        int[] proximoResult2 = new int[numeros.length];
+        int[] proximoResult3 = new int[numeros.length];
 
-//    }
+
+        for (int i = 0; i < numeros.length - 1; i++) {
+
+            if (i == 0) {
+                result1[i] = termo1 * termo1;
+                result2[i] = termo3 * termo2;
+                result3[i] = termo3 * result1[i];
+                proximoResult1[i] = result1[i];
+                proximoResult2[i] = result2[i];
+                proximoResult3[i] = result3[i];
+                consoleLog(Arrays.toString(proximoResult1));
+                consoleLog(Arrays.toString(proximoResult2));
+                consoleLog(Arrays.toString(proximoResult3));
+                total[i] = proximoResult1[i];
+                total[i] = proximoResult2[i];
+                total[i] = proximoResult3[i];
+            }
+
+            proximoResult1[i + 1] = proximoResult1[i] * termo1;
+            proximoResult2[i + 1] = proximoResult2[i] * termo3;
+            proximoResult3[i + 1] = proximoResult3[i] * result1[i];
+
+            total[i] = proximoResult2[i];
+        }
+        consoleLog(Arrays.toString(total));
+    }
 
     //  Ex 13
 
@@ -494,53 +538,116 @@ public class LISTA {
         int x = 0;
         int y = 0;
         int maiorNumero = 0;
-        int menorNumero = 0;
-        ArrayList<Integer> numeros = new ArrayList<>();
+        int menorNumero = 2000000000;
 
         while ((x >= 0 && y >= 0)) {
             consoleLog("Digite o primeiro número: ");
             x = escreverInt(read);
-//            menorNumero = x;
-            if (x < 0) break;
             consoleLog("Digite o segundo número: ");
             y = escreverInt(read);
-            if (y < 0) break;
-            maiorNumero = maior(maiorNumero, x, y);
-            menorNumero = menor(menorNumero, x, y);
+
+            if (x >= maiorNumero) {
+                maiorNumero = x;
+            }
+
+            if (y >= maiorNumero) {
+                maiorNumero = y;
+            }
+
+            if (x > 0 && y > 0) {
+                if (y <= menorNumero) {
+                    menorNumero = y;
+                }
+                if (x <= menorNumero) {
+                    menorNumero = x;
+                }
+            }
         }
+
         consoleLog("Maior número digitado " + maiorNumero);
         consoleLog("Menor número digitado " + menorNumero);
     }
 
-    public static int maior(int maiorNumero, int x, int y) {
 
-        if (x >= maiorNumero) {
-            maiorNumero = x;
-        }
-        if (y >= maiorNumero) {
-            maiorNumero = y;
+    //    Ex 15
+    public static void quinzeValores() {
+        int maiorNumero = 0;
+        int menorNumero = 2000000000;
+        double media = 0, soma = 0;
+        int a = 0, b = 0;
+        int numerosPares = 0, numerosDivisiveisPorCinco = 0, totalDenumeros = 0;
+
+        for (int i = 0; i < 15; i++) {
+            consoleLog("Digite o primeiro número: ");
+            a = escreverInt(read);
+
+            soma += a + b;
+
+            if (a % 2 == 0) {
+                numerosPares++;
+            }
+
+            if (a % 5 == 0) {
+                numerosDivisiveisPorCinco++;
+            }
+
+            if (a >= maiorNumero) {
+                maiorNumero = a;
+            }
+            if (a <= menorNumero) {
+                menorNumero = a;
+            }
+
+            totalDenumeros++;
         }
 
-        return maiorNumero;
+        media = soma / totalDenumeros;
+
+        consoleLog("Menor número: " + menorNumero);
+        consoleLog("Maior número: " + maiorNumero);
+        System.out.printf("A média dos números é %.2f %n", media);
+        consoleLog("Total de números Pares: " + numerosPares);
+        consoleLog("Total de números divisiveis por cinco: " + numerosDivisiveisPorCinco);
     }
 
-    public static int menor(int menorNumero, int x, int y) {
+    //    Ex 16
+    public static void desenho() {
+        int linha = 0, coluna = 0;
+        String x = "";
+        consoleLog("Digite o número de linhas: ");
+        linha = escreverInt(read);
+        consoleLog("Digite o número de colunas: ");
+        coluna = escreverInt(read);
+        read.nextLine();
+        consoleLog("Digite se os números serão pares ou impares: ");
+        x = escreverString(read);
 
-        if (x <= y) {
-            menorNumero = x;
-        }
-        if (x <= menorNumero) {
-            menorNumero = x;
+        int a = 0;
+
+        if (x.equalsIgnoreCase("par")) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if (a % 2 == 0) {
+                        System.out.printf("%02d xx ", a);
+                    }
+                    a++;
+                }
+                System.out.println();
+            }
         }
 
-        if (y <= menorNumero) {
-            menorNumero = y;
+        if (x.equalsIgnoreCase("impar")) {
+            for (int i = 0; i < linha; i++) {
+                for (int j = 0; j < coluna; j++) {
+                    if (a % 2 != 0) {
+                        System.out.printf("xx %02d ", a);
+                    }
+                    a++;
+                }
+                System.out.println();
+            }
         }
 
-        return menorNumero;
     }
-
-//    Ex 15
-
-
 }
+
